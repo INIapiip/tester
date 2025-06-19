@@ -1,0 +1,165 @@
+/* mental_health_chatbot/style.css */
+
+/* ===== VARIABLES ===== */
+:root {
+  --primary: #7F5AF0;      /* Ungu modern */
+  --secondary: #2CB67D;    /* Hijau mint */
+  --accent: #FF7E5F;       /* Oranye coral */
+  --dark: #16161A;         /* Dark navy */
+  --light: #FFFFFE;        /* Off-white */
+  --gray: #94A1B2;         /* Gray medium */
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, #6C44E0 100%);
+}
+
+/* ===== GLOBAL RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--dark);
+  color: var(--light);
+  line-height: 1.6;
+}
+
+/* ===== CHAT CONTAINER ===== */
+.stChatFloatingInputContainer {
+  background: rgba(22, 22, 26, 0.8) !important;
+  backdrop-filter: blur(12px);
+  padding: 1rem 2rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== MESSAGE BUBBLES ===== */
+.stChatMessage {
+  max-width: 80%;
+  margin: 0.8rem 0;
+  padding: 1.25rem 1.5rem !important;
+  border-radius: 24px !important;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  animation: messageFloat 0.4s cubic-bezier(0.2, 0.8, 0.4, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* USER MESSAGE */
+.stChatMessage[data-testid="user"] {
+  margin-left: auto;
+  margin-right: 0;
+  background: var(--gradient-primary);
+  color: white;
+  border-bottom-right-radius: 8px !important;
+}
+
+/* ASSISTANT MESSAGE */
+.stChatMessage[data-testid="assistant"] {
+  margin-right: auto;
+  margin-left: 0;
+  background: rgba(44, 182, 125, 0.15);
+  border: 1px solid rgba(44, 182, 125, 0.2);
+  border-bottom-left-radius: 8px !important;
+  backdrop-filter: blur(12px);
+}
+
+/* AVATARS */
+.stAvatar {
+  background: transparent !important;
+  font-size: 1.8rem !important;
+  margin-right: 10px !important;
+}
+
+.stChatMessage[data-testid="user"] .stAvatar {
+  color: white !important;
+}
+
+.stChatMessage[data-testid="assistant"] .stAvatar {
+  color: var(--secondary) !important;
+}
+
+/* ===== INPUT FIELD ===== */
+.stTextInput input {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 2px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 50px !important;
+  padding: 1rem 1.5rem !important;
+  color: white !important;
+  font-size: 1rem;
+  transition: all 0.3s ease !important;
+}
+
+.stTextInput input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 4px rgba(127, 90, 240, 0.2) !important;
+}
+
+.stTextInput input::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ===== SIDEBAR ===== */
+.stSidebar {
+  background: rgba(30, 30, 46, 0.9) !important;
+  backdrop-filter: blur(15px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem !important;
+}
+
+/* ===== BUTTONS ===== */
+.stButton button {
+  background: var(--gradient-primary) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 0.75rem 1.25rem !important;
+  color: white !important;
+  font-weight: 500 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  margin: 0.5rem 0 !important;
+}
+
+.stButton button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(127, 90, 240, 0.3) !important;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes messageFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ===== TYPOGRAPHY ===== */
+strong {
+  color: var(--accent);
+}
+
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+  .stChatMessage {
+    max-width: 90% !important;
+    margin: 0.6rem 0 !important;
+  }
+}
